@@ -1,12 +1,8 @@
 package com.bank.domain.checker;
 
-import com.bank.domain.entity.BankAccount;
+import com.bank.domain.entity.BankingEntity;
 
-/**
- * Single Responsibility: Only checks for duplicates
- * Open/Closed: Open for extension, closed for modification
- */
 public interface DuplicateChecker {
-    void checkDuplicate(BankAccount account);
-    void checkDuplicateOnUpdate(Long id, BankAccount account);
+    void checkDuplicate(BankingEntity entity);
+    void checkDuplicateOnUpdate(Long id, BankingEntity entity);
 }
