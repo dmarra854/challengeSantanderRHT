@@ -1,8 +1,9 @@
 package com.bank.adapter.input.rest.exception;
-
-import com.bank.domain.exception.AccountAlreadyExistsException;
-import com.bank.domain.exception.AccountNotFoundException;
-import com.bank.domain.exception.InvalidAccountDataException;
+import com.bank.adapter.input.rest.dto.ErrorResponseDTO;
+import com.bank.domain.exception.EntityAlreadyExistsException;
+import com.bank.domain.exception.EntityNotFoundException;
+import com.bank.domain.exception.ApplicationException;
+import com.bank.domain.exception.InvalidEntityDataException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -11,64 +12,82 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-/**
- * Global exception handler.
- * Single Responsibility: Handles exceptions and converts to HTTP responses
- * Open/Closed: Open for extension with new exception handlers
- */
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(AccountAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponse> handleAccountAlreadyExists(
-            AccountAlreadyExistsException ex,
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<ErrorResponseDTO> handleAccountNotFound(
+            EntityNotFoundException ex,
             HttpServletRequest request) {
-        log.warn("Account already exists exception: {}", ex.getMessage());
-        ErrorResponse error = new ErrorResponse(
-                "ACCOUNT_ALREADY_EXISTS",
-                ex.getMessage(),
-                request.getRequestURI()
-        );
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
-    }
 
-    @ExceptionHandler(AccountNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleAccountNotFound(
-            AccountNotFoundException ex,
-            HttpServletRequest request) {
-        log.warn("Account not found exception: {}", ex.getMessage());
-        ErrorResponse error = new ErrorResponse(
-                "ACCOUNT_NOT_FOUND",
-                ex.getMessage(),
-                request.getRequestURI()
-        );
+        log.warn("Account not found: {}", ex.getDetails());
+
+        ErrorResponseDTO error = ErrorResponseDTO.builder()
+                .status(HttpStatus.NOT_FOUND.value())
+                .message("La cuenta no fue encontrada")
+                .build();
+
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
-    @ExceptionHandler(InvalidAccountDataException.class)
-    public ResponseEntity<ErrorResponse> handleInvalidAccountData(
-            InvalidAccountDataException ex,
+    @ExceptionHandler(EntityAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponseDTO> handleAccountAlreadyExists(
+            EntityAlreadyExistsException ex,
             HttpServletRequest request) {
-        log.warn("Invalid account data exception: {}", ex.getMessage());
-        ErrorResponse error = new ErrorResponse(
-                "INVALID_ACCOUNT_DATA",
-                ex.getMessage(),
-                request.getRequestURI()
-        );
+
+        log.warn("Account already exists: {}", ex.getDetails());
+
+        ErrorResponseDTO error = ErrorResponseDTO.builder()
+                .status(HttpStatus.CONFLICT.value())
+                .message("Ya existe una cuenta con este número")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    }
+
+    @ExceptionHandler(InvalidEntityDataException.class)
+    public ResponseEntity<ErrorResponseDTO> handleInvalidAccountData(
+            InvalidEntityDataException ex,
+            HttpServletRequest request) {
+
+        log.warn("Invalid account data: {}", ex.getDescription());
+
+        ErrorResponseDTO error = ErrorResponseDTO.builder()
+                .status(HttpStatus.BAD_REQUEST.value())
+                .message("Los datos de la cuenta no son válidos: " + ex.getDescription())
+                .build();
+
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
+    @ExceptionHandler(ApplicationException.class)
+    public ResponseEntity<ErrorResponseDTO> handleApplicationException(
+            ApplicationException ex,
+            HttpServletRequest request) {
+
+        log.error("Application exception: {}", ex.getDescription(), ex);
+
+        ErrorResponseDTO error = ErrorResponseDTO.builder()
+                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .message(ex.getDescription())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+    }
+
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGenericException(
+    public ResponseEntity<ErrorResponseDTO> handleGenericException(
             Exception ex,
             HttpServletRequest request) {
+
         log.error("Unexpected error", ex);
-        ErrorResponse error = new ErrorResponse(
-                "INTERNAL_ERROR",
-                "An internal server error occurred",
-                request.getRequestURI()
-        );
+
+        ErrorResponseDTO error = ErrorResponseDTO.builder()
+                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .message("Error interno del servidor")
+                .build();
+
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }
 }

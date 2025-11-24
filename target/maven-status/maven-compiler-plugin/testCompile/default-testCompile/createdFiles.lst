@@ -1,0 +1,16 @@
+com/bank/adapter/input/rest/BankingEntityRestControllerTest$DeleteEndpointTests.class
+com/bank/adapter/input/rest/BankingEntityRestControllerTest$UpdateEndpointTests.class
+com/bank/application/service/BankingEntityServiceTest$CreateTests.class
+com/bank/adapter/input/rest/BankingEntityRestControllerTest.class
+com/bank/adapter/input/rest/BankingEntityRestControllerTest$CreateEndpointTests.class
+com/bank/application/service/BankingEntityServiceTest$UpdateTests.class
+com/bank/application/service/BankingEntityServiceTest$BusinessLogicTests.class
+com/bank/adapter/input/rest/BankingEntityRestControllerTest$GetByIdEndpointTests.class
+com/bank/adapter/input/rest/DemoApplicationTests.class
+com/bank/adapter/input/rest/BankingEntityRestControllerTest$GetAllEndpointTests.class
+com/bank/adapter/input/rest/BankingEntityRestControllerTest$GetByTypeEndpointTests.class
+com/bank/application/service/BankingEntityServiceTest.class
+com/bank/application/service/BankingEntityServiceTest$ReadTests.class
+com/bank/adapter/input/rest/BankingEntityRestControllerTest$HttpStatusTests.class
+com/bank/application/service/BankingEntityServiceTest$DeleteTests.class
+com/bank/adapter/input/rest/BankingEntityRestControllerTest$GetByCodeEndpointTests.class
