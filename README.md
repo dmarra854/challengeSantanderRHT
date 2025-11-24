@@ -39,11 +39,6 @@ git clone https://github.com/dmarra854/challengeSantanderRHT.git
 mvn clean install -DskipTests
 ```
 
-### 3. Ejecutar la Aplicación
-```
-mvn clean install -DskipTests
-```
-
 ### Pruebas de Integración y Documentación (Swagger UI)
 
 Con el servicio corriendo (default puerto 9091), acceder a: http://localhost:9091/swagger-ui/index.html#/.
