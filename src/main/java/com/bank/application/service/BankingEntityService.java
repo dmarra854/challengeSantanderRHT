@@ -40,7 +40,7 @@ public class BankingEntityService implements BankingEntityUseCase {
     public BankingEntity getById(Long id) {
         log.debug("Fetching entity by id: {}", id);
         return persistencePort.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Entity Not Found: " + id));
     }
 
     @Override
@@ -48,7 +48,7 @@ public class BankingEntityService implements BankingEntityUseCase {
     public BankingEntity getByCode(String code) {
         log.debug("Fetching entity by code: {}", code);
         return persistencePort.findByCode(code)
-                .orElseThrow(() -> new EntityNotFoundException("code: " + code));
+                .orElseThrow(() -> new EntityNotFoundException("Entity Not Found - code: " + code));
     }
 
     @Override
@@ -72,7 +72,7 @@ public class BankingEntityService implements BankingEntityUseCase {
         duplicateChecker.checkDuplicateOnUpdate(id, entityData);
 
         BankingEntity entity = persistencePort.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Entity Not Found: " + id));
 
         entity.setCode(entityData.getCode());
         entity.setName(entityData.getName());
@@ -96,7 +96,7 @@ public class BankingEntityService implements BankingEntityUseCase {
     public void delete(Long id) {
         log.debug("Deleting entity: {}", id);
         BankingEntity entity = persistencePort.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Entity Not Found: " + id));
         persistencePort.deleteById(id);
         log.info("Entity deleted successfully: {}", id);
     }

@@ -2,6 +2,8 @@ package com.bank.application.usecase;
 
 import com.bank.domain.entity.BankingEntity;
 import com.bank.domain.entity.EntityType;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 public interface BankingEntityUseCase {

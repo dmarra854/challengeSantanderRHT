@@ -1,17 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.bank.adapter.input.rest.BankingEntityRestControllerTest$CreateEndpointTests
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.005 s <<< FAILURE! - in com.bank.adapter.input.rest.BankingEntityRestControllerTest$CreateEndpointTests
-com.bank.adapter.input.rest.BankingEntityRestControllerTest$CreateEndpointTests.shouldCreateEntitySuccessfully  Time elapsed: 0.002 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: 
-
-expected: "CUSTOMER"
- but was: CUSTOMER
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at com.bank.adapter.input.rest.BankingEntityRestControllerTest$CreateEndpointTests.shouldCreateEntitySuccessfully(BankingEntityRestControllerTest.java:113)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in com.bank.adapter.input.rest.BankingEntityRestControllerTest$CreateEndpointTests

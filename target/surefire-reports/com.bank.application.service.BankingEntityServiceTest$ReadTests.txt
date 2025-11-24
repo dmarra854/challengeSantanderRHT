@@ -1,15 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: com.bank.application.service.BankingEntityServiceTest$ReadTests
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.013 s <<< FAILURE! - in com.bank.application.service.BankingEntityServiceTest$ReadTests
+Tests run: 12, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.014 s <<< FAILURE! - in com.bank.application.service.BankingEntityServiceTest$ReadTests
 com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidId  Time elapsed: 0.001 s  <<< FAILURE!
-java.lang.AssertionError: 
+org.opentest4j.AssertionFailedError: 
 
-Expecting throwable message:
+Expecting message to be:
+  "Entity Not Found"
+but was:
   "Entidad no encontrada"
-to contain:
-  "id: 999"
-but did not.
 
 Throwable that failed the check:
 
@@ -17,12 +16,12 @@ com.bank.domain.exception.EntityNotFoundException: Entidad no encontrada
 	at com.bank.application.service.BankingEntityService.lambda$getById$0(BankingEntityService.java:43)
 	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
 	at com.bank.application.service.BankingEntityService.getById(BankingEntityService.java:43)
-	at com.bank.application.service.BankingEntityServiceTest$ReadTests.lambda$shouldThrowEntityNotFoundExceptionForInvalidId$0(BankingEntityServiceTest.java:155)
+	at com.bank.application.service.BankingEntityServiceTest$ReadTests.lambda$shouldThrowEntityNotFoundExceptionForInvalidId$0(BankingEntityServiceTest.java:151)
 	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:63)
 	at org.assertj.core.api.AssertionsForClassTypes.catchThrowable(AssertionsForClassTypes.java:892)
 	at org.assertj.core.api.Assertions.catchThrowable(Assertions.java:1365)
 	at org.assertj.core.api.Assertions.assertThatThrownBy(Assertions.java:1209)
-	at com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidId(BankingEntityServiceTest.java:155)
+	at com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidId(BankingEntityServiceTest.java:151)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -103,13 +102,15 @@ com.bank.domain.exception.EntityNotFoundException: Entidad no encontrada
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
 
-	at com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidId(BankingEntityServiceTest.java:157)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidId(BankingEntityServiceTest.java:153)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 
-com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidCode  Time elapsed: 0 s  <<< FAILURE!
+com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidCode  Time elapsed: 0.001 s  <<< FAILURE!
 java.lang.AssertionError: 
 
 Expecting throwable message:
@@ -124,12 +125,12 @@ com.bank.domain.exception.EntityNotFoundException: Entidad no encontrada
 	at com.bank.application.service.BankingEntityService.lambda$getByCode$1(BankingEntityService.java:51)
 	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
 	at com.bank.application.service.BankingEntityService.getByCode(BankingEntityService.java:51)
-	at com.bank.application.service.BankingEntityServiceTest$ReadTests.lambda$shouldThrowEntityNotFoundExceptionForInvalidCode$1(BankingEntityServiceTest.java:183)
+	at com.bank.application.service.BankingEntityServiceTest$ReadTests.lambda$shouldThrowEntityNotFoundExceptionForInvalidCode$1(BankingEntityServiceTest.java:179)
 	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:63)
 	at org.assertj.core.api.AssertionsForClassTypes.catchThrowable(AssertionsForClassTypes.java:892)
 	at org.assertj.core.api.Assertions.catchThrowable(Assertions.java:1365)
 	at org.assertj.core.api.Assertions.assertThatThrownBy(Assertions.java:1209)
-	at com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidCode(BankingEntityServiceTest.java:183)
+	at com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidCode(BankingEntityServiceTest.java:179)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -210,7 +211,7 @@ com.bank.domain.exception.EntityNotFoundException: Entidad no encontrada
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
 
-	at com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidCode(BankingEntityServiceTest.java:185)
+	at com.bank.application.service.BankingEntityServiceTest$ReadTests.shouldThrowEntityNotFoundExceptionForInvalidCode(BankingEntityServiceTest.java:181)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
